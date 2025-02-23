@@ -38,6 +38,4 @@ public class Animal {
 
     @Column(unique = false, nullable = false, length = 3)
     private double peso;
-
-    
 }
