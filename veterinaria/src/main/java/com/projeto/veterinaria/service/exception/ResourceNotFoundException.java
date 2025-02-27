@@ -3,7 +3,7 @@ package com.projeto.veterinaria.service.exception;
 public class ResourceNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 1L;
 
-    public ResourceNotFoundException(Object id){
-        super("Resource not found. ID" + id);
+    public ResourceNotFoundException(String message){
+        super(message);
     }
 }
