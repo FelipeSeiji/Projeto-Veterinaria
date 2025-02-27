@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table
+@Table(name = "funcionario")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
