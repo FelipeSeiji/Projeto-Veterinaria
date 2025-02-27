@@ -1,30 +1,43 @@
 package com.projeto.veterinaria.model.pessoa;
 
-import jakarta.persistence.Entity;
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
-@Entity
-@Table(name= "pessoa")
+@MappedSuperclass
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Builder(access = AccessLevel.PRIVATE)
-public class Pessoa {
+public class Pessoa implements Serializable{
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @ToString.Exclude
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
 
-    private String nome;
+    @Column(nullable = false, length = 100)
+    protected String nome;
 
-    private String cpf;
+    @Column(nullable = false, length = 100)
+    protected String sobrenome;
 
-    private String email;
+    @Column(unique = true, nullable = false, length = 15)  
+    protected String cpf;
+
+    @Column(unique = true, nullable = false, length = 15)
+    protected String telefone;
+
+    @Column(unique = false, nullable = false, length = 100)
+    protected String email;
 }
