@@ -30,7 +30,7 @@ public class Agendamento implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @ToString.Exclude
     private Long id;
 

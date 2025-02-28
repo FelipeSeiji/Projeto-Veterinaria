@@ -3,10 +3,15 @@ package com.projeto.veterinaria.model.pagamento;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.projeto.veterinaria.model.consultaVeterinaria.ConsultaVeterinaria;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,7 +39,8 @@ public class Pagamento implements Serializable{
     @ToString.Exclude
     private Long id;
     
-    @Positive @NotNull
+    @Positive
+    @Column(precision = 10, scale = 2) 
     private Double valor;
 
     @NotNull
@@ -44,4 +50,7 @@ public class Pagamento implements Serializable{
     @Size(max = 50)
     private String tipoPagamento;
 
+    @ManyToOne
+    @JoinColumn(name = "consulta_id")
+    private ConsultaVeterinaria consultaVeterinaria;
 }

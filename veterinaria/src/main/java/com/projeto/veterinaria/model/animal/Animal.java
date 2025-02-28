@@ -1,14 +1,27 @@
 package com.projeto.veterinaria.model.animal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.projeto.veterinaria.DTO.AnimalDTO;
+import com.projeto.veterinaria.model.consultaVeterinaria.ConsultaVeterinaria;
+import com.projeto.veterinaria.model.responsavelDono.ResponsavelAnimal;
+import com.projeto.veterinaria.model.saudeAnimal.SaudeAnimal;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,16 +35,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name =  "animal")
+@Table(name = "animal")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Builder(access = AccessLevel.PRIVATE)
-public class Animal implements Serializable{
+public class Animal implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    //Atributos do animal
+    // Atributos do animal
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ToString.Exclude
@@ -66,6 +79,19 @@ public class Animal implements Serializable{
     @NotNull(message = "Peso não pode ser nulo")
     @Positive(message = "Peso deve ser maior que 0")
     private double peso;
+
+    @OneToOne(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private SaudeAnimal saudeAnimal = new SaudeAnimal();
+
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<ConsultaVeterinaria> consultaVeterinarias = new ArrayList<>();
+
+    @ManyToMany
+    @Builder.Default
+    @JoinTable(name = "animal_responsavelAnimal", joinColumns = @JoinColumn(name = "animal_id"), inverseJoinColumns = @JoinColumn(name = "responsavel_id"))
+    private Set<ResponsavelAnimal> responsavelAnimal = new HashSet<>();
 
     public Animal(AnimalDTO data) {
         this.nome = data.nome();

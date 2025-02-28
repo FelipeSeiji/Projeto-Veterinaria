@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,12 +35,14 @@ public abstract class Pessoa implements Serializable{
     @Column(nullable = false, length = 100)
     protected String sobrenome;
 
-    @Column(unique = true, nullable = false, length = 15)  
+    @Pattern(regexp = "^[0-9]{11}$", message = "CPF deve conter 11 dígitos")
+    @Column(unique = true, nullable = false)
     protected String cpf;
 
-    @Column(unique = true, nullable = false, length = 15)
+    @Pattern(regexp = "^\\(\\d{2}\\) \\d{4,5}-\\d{4}$", message = "Telefone inválido")
     protected String telefone;
 
     @Column(unique = false, nullable = false, length = 100)
+    @Email(message = "Email inválido")
     protected String email;
 }

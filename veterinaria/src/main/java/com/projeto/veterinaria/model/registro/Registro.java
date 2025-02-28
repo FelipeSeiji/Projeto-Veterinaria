@@ -8,8 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -20,6 +22,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @ToString
 @MappedSuperclass
+@EqualsAndHashCode
 public abstract class Registro implements Serializable{
     private static final long serialVersionUID = 1L;
 
@@ -29,5 +32,6 @@ public abstract class Registro implements Serializable{
     private Long id;
 
     @NotNull
+    @PastOrPresent(message = "A data de registro não pode ser futura.")
     private LocalDate dataRegistro;
 }

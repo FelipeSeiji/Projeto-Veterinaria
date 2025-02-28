@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,6 +40,7 @@ public class Endereco implements Serializable{
     @Column(nullable = false, length = 50)
     private String estado;
 
-    @Column(nullable = false, length = 9)
+    @Pattern(regexp = "^[0-9]{5}-[0-9]{3}$", message = "Formato de CEP inválido")
     private String cep;
+
 }
