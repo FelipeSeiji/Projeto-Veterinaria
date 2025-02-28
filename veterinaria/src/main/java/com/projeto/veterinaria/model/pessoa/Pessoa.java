@@ -24,6 +24,7 @@ public abstract class Pessoa implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ToString.Exclude
     protected Long id;
 
     @Column(nullable = false, length = 100)

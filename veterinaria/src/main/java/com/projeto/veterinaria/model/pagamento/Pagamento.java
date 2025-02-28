@@ -31,6 +31,7 @@ public class Pagamento implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ToString.Exclude
     private Long id;
     
     @Positive @NotNull

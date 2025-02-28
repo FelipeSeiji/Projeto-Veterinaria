@@ -27,6 +27,7 @@ public class Endereco implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ToString.Exclude
     private Long id;
 
     @Column(nullable = false, length = 100)

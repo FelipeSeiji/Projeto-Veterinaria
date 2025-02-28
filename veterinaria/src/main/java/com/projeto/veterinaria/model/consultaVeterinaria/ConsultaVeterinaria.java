@@ -29,5 +29,6 @@ public class ConsultaVeterinaria extends Registro{
     private String tratamentoRecomendado;
 
     @Lob
+    @Size(max = 1000)
     private String observacoes;
 }

@@ -25,6 +25,7 @@ public abstract class Registro implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ToString.Exclude
     private Long id;
 
     @NotNull
