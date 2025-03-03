@@ -40,7 +40,7 @@ public class Pagamento implements Serializable{
     private Long id;
     
     @Positive
-    @Column(precision = 10, scale = 2) 
+    @Column(precision = 10) 
     private Double valor;
 
     @NotNull

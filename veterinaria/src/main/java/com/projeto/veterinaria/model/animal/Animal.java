@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.projeto.veterinaria.DTO.AnimalDTO;
 import com.projeto.veterinaria.model.consultaVeterinaria.ConsultaVeterinaria;
 import com.projeto.veterinaria.model.responsavelDono.ResponsavelAnimal;
 import com.projeto.veterinaria.model.saudeAnimal.SaudeAnimal;
+import com.projeto.veterinaria.records.AnimalRecord;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -93,7 +93,7 @@ public class Animal implements Serializable {
     @JoinTable(name = "animal_responsavelAnimal", joinColumns = @JoinColumn(name = "animal_id"), inverseJoinColumns = @JoinColumn(name = "responsavel_id"))
     private Set<ResponsavelAnimal> responsavelAnimal = new HashSet<>();
 
-    public Animal(AnimalDTO data) {
+    public Animal(AnimalRecord data) {
         this.nome = data.nome();
         this.especie = data.especie();
         this.raca = data.raca();

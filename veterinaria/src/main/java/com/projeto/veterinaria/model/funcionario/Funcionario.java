@@ -28,7 +28,7 @@ public class Funcionario extends Pessoa{
     private String cargo;
 
     @Positive
-    private double salario;
+    private Double salario;
 
 
 }

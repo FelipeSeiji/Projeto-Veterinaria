@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projeto.veterinaria.DTO.AnimalDTO;
 import com.projeto.veterinaria.model.animal.Animal;
+import com.projeto.veterinaria.records.AnimalRecord;
 import com.projeto.veterinaria.repository.AnimalRepository;
 import com.projeto.veterinaria.service.exception.ResourceNotFoundException;
 
@@ -31,7 +31,7 @@ public class AnimalService {
     }
 
     @Transactional
-    public Animal insert(AnimalDTO data){
+    public Animal insert(AnimalRecord data){
         Animal animal = new Animal(data);
         return animalRepository.save(animal);
     }

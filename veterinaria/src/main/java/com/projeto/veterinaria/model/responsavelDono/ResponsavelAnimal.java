@@ -7,8 +7,6 @@ import com.projeto.veterinaria.model.animal.Animal;
 import com.projeto.veterinaria.model.pessoa.Pessoa;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -35,7 +33,6 @@ public class ResponsavelAnimal extends Pessoa{
     private String endereco;
 
     @ManyToMany(mappedBy = "responsavelAnimal")
-    @JoinTable(name = "animal_responsavelAnimal", joinColumns = @JoinColumn(name = "animal_id"), inverseJoinColumns = @JoinColumn(name = "responsavel_id"))
     @Builder.Default
     private Set<Animal> animal = new HashSet<>();
 }
