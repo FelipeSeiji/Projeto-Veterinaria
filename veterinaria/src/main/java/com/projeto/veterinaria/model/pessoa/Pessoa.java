@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.pessoa;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
@@ -22,6 +23,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @ToString
 public abstract class Pessoa implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

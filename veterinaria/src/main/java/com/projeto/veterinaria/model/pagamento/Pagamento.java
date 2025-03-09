@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.pagamento;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -32,21 +33,22 @@ import lombok.ToString;
 @Builder(access = AccessLevel.PRIVATE)
 @ToString
 public class Pagamento implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ToString.Exclude
     private Long id;
-    
+
     @Positive
-    @Column(precision = 10) 
+    @Column(precision = 10)
     private Double valor;
 
     @NotNull
     private LocalDate dataPagamento;
 
-    @NotBlank 
+    @NotBlank
     @Size(max = 50)
     private String tipoPagamento;
 

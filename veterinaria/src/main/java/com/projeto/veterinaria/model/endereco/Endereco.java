@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.endereco;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
@@ -23,7 +24,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder(access = AccessLevel.PRIVATE)
 @ToString
-public class Endereco implements Serializable{
+public class Endereco implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

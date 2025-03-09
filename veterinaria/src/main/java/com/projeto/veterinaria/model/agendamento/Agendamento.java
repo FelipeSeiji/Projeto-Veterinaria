@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.agendamento;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -27,6 +28,7 @@ import lombok.ToString;
 @Builder(access = AccessLevel.PRIVATE)
 @ToString
 public class Agendamento implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -38,7 +40,7 @@ public class Agendamento implements Serializable{
     private LocalDate dataAgendamento;
 
     @Lob
-    @NotBlank 
+    @NotBlank
     @Size(max = 500)
     private String descricao;
 

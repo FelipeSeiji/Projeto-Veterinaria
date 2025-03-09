@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.animal;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -42,6 +43,7 @@ import lombok.ToString;
 @ToString
 @Builder(access = AccessLevel.PRIVATE)
 public class Animal implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     // Atributos do animal

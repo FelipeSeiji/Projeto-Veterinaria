@@ -23,12 +23,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Funcionario extends Pessoa{
     @Column(length = 50, nullable = false)
-    @NotBlank 
+    @NotBlank
     @Size(max = 50)
     private String cargo;
 
     @Positive
     private Double salario;
-
-
 }

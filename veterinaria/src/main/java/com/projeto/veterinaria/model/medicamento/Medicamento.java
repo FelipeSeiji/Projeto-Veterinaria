@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.medicamento;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
@@ -24,6 +25,7 @@ import lombok.ToString;
 @Builder(access = AccessLevel.PRIVATE)
 @ToString
 public class Medicamento implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -31,16 +33,16 @@ public class Medicamento implements Serializable{
     @ToString.Exclude
     private Long id;
 
-    @NotBlank 
+    @NotBlank
     @Size(max = 100)
     private String nome;
 
-    @NotBlank 
+    @NotBlank
     @Size(max = 50)
     private String dosagem;
 
     @Size(max = 500)
     private String descricao;
 
-    
+
 }

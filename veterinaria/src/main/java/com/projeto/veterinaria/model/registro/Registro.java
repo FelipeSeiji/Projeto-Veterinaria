@@ -1,5 +1,6 @@
 package com.projeto.veterinaria.model.registro;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -24,6 +25,7 @@ import lombok.experimental.SuperBuilder;
 @MappedSuperclass
 @EqualsAndHashCode
 public abstract class Registro implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
